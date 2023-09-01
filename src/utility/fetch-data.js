@@ -1,4 +1,4 @@
-const fetchData = async () => {
+const fetchEventsData = async () => {
   try {
     const response = await fetch(
       "https://react-http-6cb96-default-rtdb.europe-west1.firebasedatabase.app/events.json"
@@ -18,4 +18,4 @@ const fetchData = async () => {
 
 };
 
-export default fetchData;
+export default fetchEventsData;

@@ -1,0 +1,11 @@
+.main-nav ul li {
+    list-style-type: none;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+}
+
+.active {
+    text-decoration: underline;
+}
