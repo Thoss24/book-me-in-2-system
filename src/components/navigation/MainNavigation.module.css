@@ -1,11 +1,26 @@
-.main-nav ul li {
+.main-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(39, 36, 36, 0.8);
+    height: 10vh;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     list-style-type: none;
 }
 
-.main-nav ul li a {
+a {
+    /* font-size: 24px; */
+    color: rgb(201, 182, 12);
     text-decoration: none;
 }
 
 .active {
-    text-decoration: underline;
+    text-decoration: underline; 
 }

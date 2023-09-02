@@ -1,4 +1,4 @@
-// css 
+// css
 import "./App.css";
 // third party
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -6,12 +6,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppRoot from "./routes/app_root/AppRoot";
 import AppError from "./routes/error/AppError";
 import HomePage from "./routes/home/HomePage";
-import EventsHomePage from "./routes/events_pages/EventsHomePage";
+import EventsHomePage, {
+  loader as eventsLoader,
+} from "./routes/events_pages/EventsHomePage";
 import BookedEventsHomePage from "./routes/booked_events_pages/BookedEventsHomePage";
+import EventDetailPage, {
+  loader as eventDetailsLoader,
+} from "./routes/events_pages/EventDetailPage";
 import LoginPage from "./routes/login/LoginPage";
 
 function App() {
-
   const route = createBrowserRouter([
     {
       path: "/",
@@ -25,6 +29,12 @@ function App() {
         {
           path: "events",
           element: <EventsHomePage />,
+          loader: eventsLoader,
+        },
+        {
+          path: "events/:eventId",
+          element: <EventDetailPage />,
+          loader: eventDetailsLoader,
         },
         {
           path: "booked-events",
@@ -34,8 +44,7 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={route}></RouterProvider>
-
+  return <RouterProvider router={route}></RouterProvider>;
 }
 
 export default App;

@@ -21,7 +21,7 @@ const LoginPage = () => {
 
     const validateLogin = () => {
        for (const details in loginData) {
-        if (email.current.value === loginData[details].username) {
+        if (email.current.value === loginData[details].username && password.current.value === loginData[details].password) {
             console.log("Login")
             return
         } else {
