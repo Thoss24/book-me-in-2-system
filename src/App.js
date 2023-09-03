@@ -13,7 +13,10 @@ import BookedEventsHomePage from "./routes/booked_events_pages/BookedEventsHomeP
 import EventDetailPage, {
   loader as eventDetailsLoader,
 } from "./routes/events_pages/EventDetailPage";
-import LoginPage from "./routes/login/LoginPage";
+import EventsRoot from "./routes/events_root/EventsRoot";
+import NewEventPage from "./routes/events_pages/NewEventPage";
+import EditEventPage from "./routes/events_pages/EditEventPage";
+import {action as manipulateEventAction} from './utility/manipulate-event-actions';
 
 function App() {
   const route = createBrowserRouter([
@@ -27,14 +30,36 @@ function App() {
           element: <HomePage />,
         },
         {
-          path: "events",
-          element: <EventsHomePage />,
-          loader: eventsLoader,
-        },
-        {
-          path: "events/:eventId",
-          element: <EventDetailPage />,
-          loader: eventDetailsLoader,
+          path: 'events',
+          element: <EventsRoot />,
+          children: [
+            {
+              index: true,
+              element: <EventsHomePage />,
+              loader: eventsLoader,
+            },
+            {
+              id: "events-details",
+              path: ":eventId",
+              loader: eventDetailsLoader,
+              children: [
+                {
+                  index: true,
+                  element: <EventDetailPage />,
+                },
+                {
+                  path: 'edit',
+                  element: <EditEventPage />,
+                  action: manipulateEventAction
+                }
+              ]
+            },
+            {
+              path: 'new-event',
+              element: <NewEventPage />,
+              action: manipulateEventAction
+            }
+          ]
         },
         {
           path: "booked-events",
