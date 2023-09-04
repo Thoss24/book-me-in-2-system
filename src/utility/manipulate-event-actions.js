@@ -4,6 +4,8 @@ export const action = async ({request, params}) => {
 
     const method = request.method
 
+    console.log(method)
+
     const data = await request.formData()
 
     const name = data.get('name')

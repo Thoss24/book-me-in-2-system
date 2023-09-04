@@ -1,11 +1,7 @@
-import { Form } from "react-router-dom"
+import NewEventForm from "../../components/events_elements/NewEventForm";
 
 const NewEventPage = () => {
-    return (
-        <Form>
-            <h1>New Event Page</h1>
-        </Form>
-    )
+  return <NewEventForm />;
 };
 
-export default NewEventPage
+export default NewEventPage;
