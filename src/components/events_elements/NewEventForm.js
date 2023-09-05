@@ -1,41 +1,47 @@
 import { Form } from "react-router-dom";
 import useFormInput from "../../hooks/use-form-input";
 import useValidateForm from "../../hooks/use-validate-form";
+import classes from "./NewEventForm.module.css";
 
 const NewEventForm = () => {
 
     const  { nameIsValid, dateIsValid } = useValidateForm();
 
     const {
-        inputValue: nameInputValue,
-        inputValid: nameInputValid,
-        inputInvalid: nameInputInvalid,
-        handleChangeInput: nameChangeInput,
-        handleIsTouched: nameIsTouched,
-        handleReset: nameHandleReset,
+      inputInvalid: nameInputInvalid,
+      handleChangeInput: nameChangeInput,
+      handleIsTouched: nameIsTouched,
+      handleReset: nameHandleReset,
     } = useFormInput(nameIsValid);
 
     const {
-        inputValue: dateInputValue,
-        inputValid: dateInputValid,
-        inputInvalid: dateInputInvalid,
-        handleChangeInput: dateChangeInput,
-        handleIsTouched: dateIsTouched,
-        handleReset: dateHandleReset,
+      inputInvalid: dateInputInvalid,
+      handleChangeInput: dateChangeInput,
+      handleIsTouched: dateIsTouched,
+      handleReset: dateHandleReset,
     } = useFormInput(dateIsValid)
 
+    const submitFormHandler = () => {
+      nameHandleReset()
+      dateHandleReset()
+    };
+
+  const formIsValid = !nameInputInvalid && !dateInputInvalid;
+  const nameInputIsValid = nameInputInvalid ? classes.invalid : classes.valid;
+  const dateInputIsValid = dateInputInvalid ? classes.invalid : classes.valid;
+
   return (
-    <Form method="POST">
+    <Form method="POST" onSubmit={submitFormHandler}>
       <div>
         <label htmlFor="">Name</label>
-        <input type="text" name="name" defaultValue={nameInputValue}/>
+        <input className={nameInputIsValid} type="text" name="name" onChange={nameChangeInput} onBlur={nameIsTouched}/>
       </div>
       <div>
         <label htmlFor="">Date</label>
-        <input type="date" name="date" defaultValue={dateInputValue}/>
+        <input className={dateInputIsValid} type="date" name="date" onChange={dateChangeInput} onBlur={dateIsTouched}/>
       </div>
       <div>
-        <button type="submit">Add</button>
+        <button type="submit" disabled={!formIsValid}>Add</button>
       </div>
     </Form>
   );

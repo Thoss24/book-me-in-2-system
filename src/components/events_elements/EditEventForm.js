@@ -1,22 +1,49 @@
 import { Form } from "react-router-dom";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import useFormInput from "../../hooks/use-form-input";
+import useValidateForm from "../../hooks/use-validate-form";
+import classes from "./EditEventForm.module.css";
 
 const EditEventForm = () => {
 
+    const { nameIsValid, dateIsValid } = useValidateForm()
+
+    const {
+        inputInvalid: nameInputInvalid,
+        handleChangeInput: handleNameChange,
+        handleIsTouched: handleNameIsTouched,
+        handleReset: handleNameReset,
+    } = useFormInput(nameIsValid);
+
+    const {
+        inputInvalid: dateInputInvalid,
+        handleChangeInput: handleDateChange,
+        handleIsTouched: handleDateIsTouched,
+        handleReset: handleDateReset,
+    } = useFormInput(dateIsValid);
+
+    const submitFormHandler = () => {
+        handleNameReset()
+        handleDateReset()
+    };
+
+    const formIsValid = !nameInputInvalid && !dateInputInvalid;
+    const nameInputIsValid = nameInputInvalid ? classes.invalid : classes.valid;
+    const dateInputIsValid = dateInputInvalid ? classes.invalid : classes.valid;
+
     return (
-        <Form method="PATCH">
+        <Form method="PATCH" onSubmit={submitFormHandler}>
             <h1>Edit Event Page</h1>
             <div>
                 <label htmlFor=""></label>
-                <input type="text" name="name"/>
+                <input className={nameInputIsValid} type="text" name="name" onChange={handleNameChange} onBlur={handleNameIsTouched}/>
             </div>
             <div>
                 <label htmlFor=""></label>
-                <input type="date" name="date"/>
+                <input className={dateInputIsValid} type="date" name="date" onChange={handleDateChange} onBlur={handleDateIsTouched}/>
             </div>
             <button type="submit">Done</button>
-            <button type="none"><Link to={'..'}>Cancel</Link></button>
+            <button type="none" disabled={!formIsValid}><Link to={'..'}>Cancel</Link></button>
         </Form>
     )
 };

@@ -8,7 +8,7 @@ const useFormInput = (validate) => {
     const inputInvalid = isTouched && !inputValid;
 
     const handleChangeInput = (event) => {
-        setInputValue(event.current.value)
+        setInputValue(event.target.value)
     };
 
     const handleIsTouched = () => {
