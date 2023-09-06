@@ -12,7 +12,7 @@ import EventsHomePage, {
 import BookedEventsHomePage from "./routes/booked_events_pages/BookedEventsHomePage";
 import EventDetailPage, {
   loader as eventDetailsLoader,
-} from "./routes/events_pages/EventDetailPage";
+action as deleteEventAction } from "./routes/events_pages/EventDetailPage";
 import EventsRoot from "./routes/events_root/EventsRoot";
 import NewEventPage from "./routes/events_pages/NewEventPage";
 import EditEventPage from "./routes/events_pages/EditEventPage";
@@ -46,6 +46,7 @@ function App() {
                 {
                   index: true,
                   element: <EventDetailPage />,
+                  action: deleteEventAction
                 },
                 {
                   path: 'edit',
