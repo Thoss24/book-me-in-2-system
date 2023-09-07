@@ -9,6 +9,7 @@ const EventsList = (props) => {
        const finalArr = []
 
         for (const i in events) {
+            
             finalArr.push({
                 name: events[i].name,
                 date: events[i].date,

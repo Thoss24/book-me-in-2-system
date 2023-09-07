@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import useFormInput from "../../hooks/use-form-input";
 import useValidateForm from "../../hooks/use-validate-form";
 import classes from "./NewEventForm.module.css";
@@ -42,6 +42,7 @@ const NewEventForm = () => {
       </div>
       <div>
         <button type="submit" disabled={!formIsValid}>Add</button>
+        <button type="none"><Link to={'..'} relative="path">Cancel</Link></button>
       </div>
     </Form>
   );

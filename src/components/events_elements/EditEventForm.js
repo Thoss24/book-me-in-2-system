@@ -4,7 +4,7 @@ import useFormInput from "../../hooks/use-form-input";
 import useValidateForm from "../../hooks/use-validate-form";
 import classes from "./EditEventForm.module.css";
 
-const EditEventForm = () => {
+const EditEventForm = (props) => {
 
     const { nameIsValid, dateIsValid } = useValidateForm()
 
@@ -36,11 +36,11 @@ const EditEventForm = () => {
             <h1>Edit Event Page</h1>
             <div>
                 <label htmlFor=""></label>
-                <input className={nameInputIsValid} type="text" name="name" onChange={handleNameChange} onBlur={handleNameIsTouched}/>
+                <input className={nameInputIsValid} type="text" name="name" onChange={handleNameChange} onBlur={handleNameIsTouched} defaultValue={props.name}/>
             </div>
             <div>
                 <label htmlFor=""></label>
-                <input className={dateInputIsValid} type="date" name="date" onChange={handleDateChange} onBlur={handleDateIsTouched}/>
+                <input className={dateInputIsValid} type="date" name="date" onChange={handleDateChange} onBlur={handleDateIsTouched} defaultValue={props.date}/>
             </div>
             <button type="submit">Done</button>
             <button type="none" disabled={!formIsValid}><Link to={'..'}>Cancel</Link></button>

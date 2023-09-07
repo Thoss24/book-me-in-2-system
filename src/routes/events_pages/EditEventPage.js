@@ -3,13 +3,15 @@ import { useRouteLoaderData } from "react-router-dom";
 
 const EditEventPage = () => {
 
-    const {event} = useRouteLoaderData('events-details');
+    const { event } = useRouteLoaderData('events-details');
 
-    console.log(event)
+    const name = event.name;
+
+    const date = event.date;
 
   return <div>
     <h1></h1>
-    <EditEventForm />
+    <EditEventForm name={name} date={date}/>
   </div>;
 };
 
