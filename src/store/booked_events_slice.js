@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const defaultBookedEventsState = {
     bookedEvents: [],
@@ -9,10 +9,15 @@ const bookedEventsSlice = createSlice({
     name: "booked-events",
     initialState: defaultBookedEventsState,
     reducers: {
-        addEvent(state) {
+        replaceBookedEvents(state, action) {
 
         },
-        removeEvent(state) {
+        addEvent(state, action) {
+           const existingBookedEventIndex = state.bookedEvents.findIndex((event) => event.id === action.id);
+           
+            console.log(action)
+        },
+        removeEvent(state, action) {
 
         }
     }
