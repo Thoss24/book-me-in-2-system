@@ -1,4 +1,4 @@
-import NewEventForm from "../../components/events_elements/NewEventForm";
+import NewEventForm from "../../components/events_elements/new_events/NewEventForm";
 
 const NewEventPage = () => {
   return <NewEventForm />;

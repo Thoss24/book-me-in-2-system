@@ -1,8 +1,8 @@
-import Button from "../ui/Button";
+import Button from "../../ui/Button";
 import classes from "./EventDetails.module.css";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { bookedEventsActions } from "../../store/booked_events_slice";
+import { bookedEventsActions } from "../../../store/booked_events_slice";
 
 const EventDetails = (props) => {
 

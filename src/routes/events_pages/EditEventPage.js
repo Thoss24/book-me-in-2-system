@@ -1,4 +1,4 @@
-import EditEventForm from "../../components/events_elements/EditEventForm";
+import EditEventForm from "../../components/events_elements/edit_event_elements/EditEventForm";
 import { useRouteLoaderData } from "react-router-dom";
 
 const EditEventPage = () => {

@@ -4,7 +4,7 @@ import { defer, Await, useSubmit, redirect } from "react-router-dom";
 import { Suspense } from "react";
 // local files - components
 import PageHeading from "../../components/ui/PageHeading";
-import EventDetails from "../../components/events_elements/EventDetails";
+import EventDetails from "../../components/events_elements/event_elements/EventDetails";
 import MainContentWrapper from "../../components/wrapper/MainContentWrapper";
 // fetched data
 import fetchEvent from "../../utility/fetch-event-data";

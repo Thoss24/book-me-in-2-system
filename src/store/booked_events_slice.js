@@ -10,7 +10,7 @@ const bookedEventsSlice = createSlice({
     initialState: defaultBookedEventsState,
     reducers: {
         replaceBookedEvents(state, action) {
-
+            state.bookedEvents = [action.payload]
         },
         addEvent(state, action) {
            const existingBookedEventIndex = state.bookedEvents.findIndex((event) => event.id === action.id);

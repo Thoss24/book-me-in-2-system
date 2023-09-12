@@ -9,7 +9,7 @@ const getBookedEventsData = async (dispatch) => {
 
     const data = await response.json();
 
-    dispatch(bookedEventsActions.addEvent(data))
+    dispatch(bookedEventsActions.replaceBookedEvents(data))
 };
 
 export default getBookedEventsData

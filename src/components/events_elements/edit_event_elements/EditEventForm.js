@@ -1,7 +1,7 @@
 import { Form } from "react-router-dom";
 import { Link } from "react-router-dom";
-import useFormInput from "../../hooks/use-form-input";
-import useValidateForm from "../../hooks/use-validate-form";
+import useFormInput from "../../../hooks/use-form-input";
+import useValidateForm from "../../../hooks/use-validate-form";
 import classes from "./EditEventForm.module.css";
 
 const EditEventForm = (props) => {
