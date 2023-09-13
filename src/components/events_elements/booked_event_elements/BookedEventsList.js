@@ -2,27 +2,30 @@ import BookedEventListItem from "./BookedEventListItem";
 
 const BookedEventsList = (props) => {
 
-    const test = () => {
-        for (const i in props.events) {
-            console.log(props.events)
-        }
+  const extractAndStoreBookedEvents = () => {
+    let result = [];
+    const events = props.events[0];
+    for (const event in events) {
+      result.push(events[event]);
     }
-    test()
+    return result
+  };
+  extractAndStoreBookedEvents();
 
-    return (
-        <main>
-            <div>
-                {props.events.map(event => (
-                    <BookedEventListItem 
-                    name={event.name}
-                    date={event.date}
-                    key={event}
-                    id={event}
-                    />
-                ))}
-            </div>
-        </main>
-    )
+  return (
+    <main>
+      <div>
+        {extractAndStoreBookedEvents().map((event) => (
+          <BookedEventListItem
+            name={event.name}
+            date={event.date}
+            key={extractAndStoreBookedEvents().indexOf(event)}
+            id={event}
+          />
+        ))}
+      </div>
+    </main>
+  );
 };
 
-export default BookedEventsList
+export default BookedEventsList;
