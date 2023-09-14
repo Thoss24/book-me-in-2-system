@@ -12,12 +12,15 @@ import EventsHomePage, {
 import BookedEventsHomePage from "./routes/booked_events_pages/BookedEventsHomePage";
 import EventDetailPage, {
   loader as eventDetailsLoader,
-action as deleteEventAction } from "./routes/events_pages/EventDetailPage";
+  action as deleteEventAction,
+} from "./routes/events_pages/EventDetailPage";
 import EventsRoot from "./routes/events_root/EventsRoot";
 import NewEventPage from "./routes/events_pages/NewEventPage";
 import EditEventPage from "./routes/events_pages/EditEventPage";
-import {action as manipulateEventAction} from './utility/manipulate-event-actions';
+import { action as manipulateEventAction } from "./utility/manipulate-event-actions";
 import BookedEventDetailPage from "./routes/booked_events_pages/BookedEventDetailPage";
+import BookedEventsRoot from "./routes/booked_events_pages/BookedEventsRoot";
+import CalenderPage from "./routes/calender_pages/CalenderPage";
 
 function App() {
   const route = createBrowserRouter([
@@ -31,7 +34,7 @@ function App() {
           element: <HomePage />,
         },
         {
-          path: 'events',
+          path: "events",
           element: <EventsRoot />,
           children: [
             {
@@ -47,31 +50,39 @@ function App() {
                 {
                   index: true,
                   element: <EventDetailPage />,
-                  action: deleteEventAction
+                  action: deleteEventAction,
                 },
                 {
-                  path: 'edit',
+                  path: "edit",
                   element: <EditEventPage />,
-                  action: manipulateEventAction
-                }
-              ]
+                  action: manipulateEventAction,
+                },
+              ],
             },
             {
-              path: 'new-event',
+              path: "new-event",
               element: <NewEventPage />,
-              action: manipulateEventAction
-            }
-          ]
+              action: manipulateEventAction,
+            },
+          ],
         },
         {
           path: "booked-events",
-          element: <BookedEventsHomePage />,
+          element: <BookedEventsRoot />,
           children: [
             {
-              path: 'booked-event-details',
-              element: <BookedEventDetailPage />
-            }
-          ]
+              index: true,
+              element: <BookedEventsHomePage />,
+            },
+            {
+              path: "booked-event-details",
+              element: <BookedEventDetailPage />,
+            },
+            {
+              path: "calender",
+              element: <CalenderPage />,
+            },
+          ],
         },
       ],
     },
