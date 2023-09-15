@@ -20,7 +20,6 @@ import EditEventPage from "./routes/events_pages/EditEventPage";
 import { action as manipulateEventAction } from "./utility/manipulate-event-actions";
 import BookedEventDetailPage from "./routes/booked_events_pages/BookedEventDetailPage";
 import BookedEventsRoot from "./routes/booked_events_pages/BookedEventsRoot";
-import CalenderPage from "./routes/calender_pages/CalenderPage";
 
 function App() {
   const route = createBrowserRouter([
@@ -77,10 +76,6 @@ function App() {
             {
               path: "booked-event-details",
               element: <BookedEventDetailPage />,
-            },
-            {
-              path: "calender",
-              element: <CalenderPage />,
             },
           ],
         },

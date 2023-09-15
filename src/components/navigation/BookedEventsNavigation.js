@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
+import classes from './BookedEventsNavigation.module.css';
 
 const BookedEventsNavigation = () => {
     return (
-        <nav>
+        <nav className={classes['booked-events-nav']}>
             <ul>
                 <li><Link to={'/booked-events'}>Booked Events</Link></li>
-                <li><Link to={'calender'}>Calender</Link></li>
             </ul>
         </nav>
     )

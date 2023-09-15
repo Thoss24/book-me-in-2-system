@@ -1,11 +1,12 @@
 // third party imports
-import { useRouteLoaderData } from "react-router-dom";
-import { defer, Await, useSubmit, redirect } from "react-router-dom";
-import { Suspense } from "react";
+import { defer, Await, useSubmit, redirect, useRouteLoaderData } from "react-router-dom";
+import { Suspense, useEffect } from "react";
+import { useDispatch } from "react-redux";
 // local files - components
 import PageHeading from "../../components/ui/PageHeading";
 import EventDetails from "../../components/events_elements/event_elements/EventDetails";
 import MainContentWrapper from "../../components/wrapper/MainContentWrapper";
+import getBookedEventsData from './../../store/booked_events_actions';
 // fetched data
 import fetchEvent from "../../utility/fetch-event-data";
 
@@ -22,6 +23,12 @@ const EventDetailPage = () => {
       submit(null, { method: "delete" });
     }
   };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      dispatch(getBookedEventsData)
+  }, [dispatch])
 
   return (
     <MainContentWrapper>

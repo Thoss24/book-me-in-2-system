@@ -16,7 +16,7 @@ const EventsList = (props) => {
                 id: i
             })
         };
-
+    console.log(finalArr)
     return finalArr
     }
     

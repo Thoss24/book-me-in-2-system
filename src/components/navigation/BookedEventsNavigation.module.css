@@ -1,0 +1,14 @@
+.booked-events-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booked-events-nav ul li {
+    list-style-type: none;
+}
+
+.booked-events-nav ul li a {
+    text-decoration: none;
+    color: rgb(201, 182, 12);
+}

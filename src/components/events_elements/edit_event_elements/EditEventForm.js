@@ -42,8 +42,8 @@ const EditEventForm = (props) => {
                 <label htmlFor=""></label>
                 <input className={dateInputIsValid} type="date" name="date" onChange={handleDateChange} onBlur={handleDateIsTouched} defaultValue={props.date}/>
             </div>
-            <button type="submit">Done</button>
-            <button type="none" disabled={!formIsValid}><Link to={'..'}>Cancel</Link></button>
+            <button type="submit" disabled={!formIsValid}>Done</button>
+            <button type="none"><Link to={'..'}>Cancel</Link></button>
         </Form>
     )
 };

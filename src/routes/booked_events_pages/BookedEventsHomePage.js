@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import getBookedEventsData from './../../store/booked_events_actions';
+import { useDispatch } from "react-redux";
+import getBookedEventsData from "../../store/booked_events_actions";
 import BookedEventsList from "../../components/events_elements/booked_event_elements/BookedEventsList";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
@@ -13,6 +13,8 @@ const BookedEventsHomePage = () => {
     useEffect(() => {
         dispatch(getBookedEventsData)
     }, [dispatch])
+
+    console.log(bookedEvents)
 
     return (
         <BookedEventsList events={bookedEvents}/>
