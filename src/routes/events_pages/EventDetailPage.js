@@ -1,17 +1,21 @@
 // third party imports
 import { defer, Await, useSubmit, redirect, useRouteLoaderData } from "react-router-dom";
 import { Suspense, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // local files - components
 import PageHeading from "../../components/ui/PageHeading";
 import EventDetails from "../../components/events_elements/event_elements/EventDetails";
 import MainContentWrapper from "../../components/wrapper/MainContentWrapper";
 import getBookedEventsData from './../../store/booked_events_actions';
+import { addEventData } from "./../../store/booked_events_actions";
 // fetched data
 import fetchEvent from "../../utility/fetch-event-data";
 
 const EventDetailPage = () => {
   const { event } = useRouteLoaderData("events-details");
+
+  const bookedEvents = useSelector(state => state.bookedEvents.bookedEvents);
+  console.log(bookedEvents)
 
   const submit = useSubmit();
 
@@ -29,6 +33,10 @@ const EventDetailPage = () => {
   useEffect(() => {
       dispatch(getBookedEventsData)
   }, [dispatch])
+  
+  useEffect(() => {
+    addEventData(bookedEvents)
+  }, [bookedEvents])
 
   return (
     <MainContentWrapper>
