@@ -7,7 +7,11 @@ const BookedEventsList = (props) => {
     let result = [];
     const events = props.events;
     for (const event in events) {
-      result.push(events[event]);
+      result.push({
+        name: events[event].name,
+        date: events[event].date,
+        id: event
+      });
     }
     return result
   };
@@ -20,8 +24,8 @@ const BookedEventsList = (props) => {
           <BookedEventListItem
             name={event.name}
             date={event.date}
-            key={extractAndStoreBookedEvents().indexOf(event)}
-            id={event}
+            key={event.id}
+            id={event.id}
           />
         ))}
       </div>

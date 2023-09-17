@@ -22,3 +22,11 @@ const BookedEventsHomePage = () => {
 };
 
 export default BookedEventsHomePage
+
+export const loader = ({request, params}) => {
+    
+};
+
+export const action = ({request, params}) => {
+
+};

@@ -23,9 +23,8 @@ export const addEventData = async (cart) => {
         throw new Error("Could not load cart!")
     }
 
-    
-
-
 };
+
+
 
 export default getBookedEventsData;
