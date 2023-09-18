@@ -13,28 +13,48 @@ const bookedEventsSlice = createSlice({
       state.bookedEvents = action.payload;
     },
     addEvent(state, action) {
-      const bookedEventsObj = Object.entries(current(state.bookedEvents));
-      const bookedEvents = [];
+      for (const i in state.bookedEvents) {
+          console.log(i)
+        }
 
-      for (const i in bookedEventsObj) {
-        bookedEvents[i] = bookedEventsObj[i][1];
-      }
+      // const bookedEventsObj = Object.entries(current(state.bookedEvents));
+      // const bookedEvents = [];
 
-      const existingBookedEventIndex = bookedEvents.findIndex(
-        (event) => event.name === action.payload.name
-      );
+      // for (const i in bookedEventsObj) {
+      //   bookedEvents[i] = bookedEventsObj[i][1];
+      // }
 
-      const existingCartItem = bookedEvents[existingBookedEventIndex]
+      // const existingBookedEventIndex = bookedEvents.findIndex(
+      //   (event) => event.name === action.payload.name
+      // );
 
-      if (existingCartItem) {
-        alert("This event has already been booked")
-      } else {
-        bookedEvents.push(action.payload)
-        state.bookedEvents = bookedEvents
-      }
-      
+      // const existingCartItem = bookedEvents[existingBookedEventIndex]
+
+      // if (existingCartItem) {
+      //   alert("This event has already been booked")
+      // } else {
+      //   bookedEvents.push(action.payload)
+      //   state.bookedEvents = bookedEvents
+      // }
     },
-    removeEvent(state, action) {},
+    removeEvent(state, action) {
+      console.log(action.payload)
+      console.log(Object.entries(state.bookedEvents))
+      // const bookedEventsObj = Object.entries(current(state.bookedEvents));
+      // const bookedEvents = [];
+
+      // for (const i in bookedEventsObj) {
+      //   bookedEvents[i] = bookedEventsObj[i][1];
+      // }
+
+      // const existingBookedEventIndex = bookedEvents.findIndex(
+      //   (event) => event.name === action.payload.name
+      // );
+
+      // bookedEvents.splice(existingBookedEventIndex, 1);
+      // state.bookedEvents = bookedEvents
+      // console.log(current(state.bookedEvents))
+    },
   },
 });
 

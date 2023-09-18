@@ -22,7 +22,7 @@ export const action = async ({request, params}) => {
     if (method === 'PATCH') {
         const id = params.eventId
         url = `https://react-http-6cb96-default-rtdb.europe-west1.firebasedatabase.app/events/${id}.json`
-    }
+    };
 
     const response = await fetch(url, {
         method: method,

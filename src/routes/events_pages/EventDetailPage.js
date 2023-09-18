@@ -1,5 +1,5 @@
 // third party imports
-import { defer, Await, useSubmit, redirect, useRouteLoaderData } from "react-router-dom";
+import { defer, Await, redirect, useRouteLoaderData } from "react-router-dom";
 import { Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
 // local files - components
@@ -15,17 +15,6 @@ const EventDetailPage = () => {
 
   const bookedEvents = useSelector(state => state.bookedEvents.bookedEvents);
   console.log(bookedEvents)
-
-  const submit = useSubmit();
-
-  const deleteEventHandler = () => {
-    const proceed = window.confirm(
-      "Are you sure you want to delete this event?"
-    );
-    if (proceed) {
-      submit(null, { method: "delete" });
-    }
-  };
   
   useEffect(() => {
     addEventData(bookedEvents)
@@ -38,7 +27,6 @@ const EventDetailPage = () => {
         <Await resolve={event}>
           {(event) => (
             <EventDetails
-              deleteEvent={deleteEventHandler}
               name={event.name}
               date={event.date}
             />
@@ -75,7 +63,7 @@ export const action = async ({ request, params }) => {
 
   if (!response.ok) {
     throw new Error("Something went wrong!");
-  }
+  };
 
   return redirect("/events");
 };

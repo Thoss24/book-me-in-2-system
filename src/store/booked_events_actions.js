@@ -5,11 +5,11 @@ const getBookedEventsData = async (dispatch) => {
 
     if (!response.ok) {
         throw new Error("Could not load cart!")
-    }
+    };
 
     const data = await response.json();
 
-    dispatch(bookedEventsActions.replaceBookedEvents(data))
+    dispatch(bookedEventsActions.replaceBookedEvents(data));
 };
 
 export const addEventData = async (cart) => {
@@ -21,8 +21,12 @@ export const addEventData = async (cart) => {
 
     if (!response.ok) {
         throw new Error("Could not load cart!")
-    }
+    };
 
+};
+
+export const removeEventData = async (data) => {
+    
 };
 
 
