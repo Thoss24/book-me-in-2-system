@@ -10,50 +10,35 @@ const bookedEventsSlice = createSlice({
   initialState: defaultBookedEventsState,
   reducers: {
     replaceBookedEvents(state, action) {
-      state.bookedEvents = action.payload;
+      if (action.payload === null) {
+        state.bookedEvents = state.bookedEvents
+        console.log(current(state.bookedEvents))
+      } else {
+        state.bookedEvents = action.payload;
+        console.log(current(state))
+      }
     },
     addEvent(state, action) {
-      for (const i in state.bookedEvents) {
-          console.log(i)
-        }
 
-      // const bookedEventsObj = Object.entries(current(state.bookedEvents));
-      // const bookedEvents = [];
+      const existingBookedEventIndex = state.bookedEvents.findIndex(
+        (event) => event.name === action.payload.name
+      );
 
-      // for (const i in bookedEventsObj) {
-      //   bookedEvents[i] = bookedEventsObj[i][1];
-      // }
+      const existingCartItem = state.bookedEvents[existingBookedEventIndex];
 
-      // const existingBookedEventIndex = bookedEvents.findIndex(
-      //   (event) => event.name === action.payload.name
-      // );
-
-      // const existingCartItem = bookedEvents[existingBookedEventIndex]
-
-      // if (existingCartItem) {
-      //   alert("This event has already been booked")
-      // } else {
-      //   bookedEvents.push(action.payload)
-      //   state.bookedEvents = bookedEvents
-      // }
+      if (existingCartItem) {
+        alert("This event has already been booked")
+      } else {
+        state.bookedEvents.push(action.payload)
+      };
     },
     removeEvent(state, action) {
-      console.log(action.payload)
-      console.log(Object.entries(state.bookedEvents))
-      // const bookedEventsObj = Object.entries(current(state.bookedEvents));
-      // const bookedEvents = [];
 
-      // for (const i in bookedEventsObj) {
-      //   bookedEvents[i] = bookedEventsObj[i][1];
-      // }
+      const existingBookedEventIndex = state.bookedEvents.findIndex(
+        (event) => event.name === action.payload.name
+      );
 
-      // const existingBookedEventIndex = bookedEvents.findIndex(
-      //   (event) => event.name === action.payload.name
-      // );
-
-      // bookedEvents.splice(existingBookedEventIndex, 1);
-      // state.bookedEvents = bookedEvents
-      // console.log(current(state.bookedEvents))
+      state.bookedEvents.splice(existingBookedEventIndex, 1);
     },
   },
 });

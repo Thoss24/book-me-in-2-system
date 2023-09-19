@@ -2,15 +2,15 @@ import { json, redirect } from "react-router-dom";
 
 export const action = async ({request, params}) => {
 
-    const method = request.method
+    const method = request.method;
 
-    console.log(method)
+    console.log(method);
 
-    const data = await request.formData()
+    const data = await request.formData();
 
-    const name = data.get('name')
+    const name = data.get('name');
 
-    const date = data.get('date')
+    const date = data.get('date');
 
     const newFormData = {
         name: name,
@@ -31,7 +31,7 @@ export const action = async ({request, params}) => {
 
     if (!response.ok) {
         throw json({message: "could not find event"}, {status: 500})
-    } 
+    } ;
 
-    return redirect('/events')
+    return redirect('/events');
 };
