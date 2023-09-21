@@ -1,20 +1,15 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import getBookedEventsData from "../../store/booked_events_actions";
 import BookedEventsList from "../../components/events_elements/booked_event_elements/BookedEventsList";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useLoaderData } from "react-router-dom";
+import { bookedEventsActions } from "../../store/booked_events_slice";
 
 const BookedEventsHomePage = () => {
 
-    const bookedEvents = useSelector(state => state.bookedEvents.bookedEvents);
+    const bookedEvents = useLoaderData();
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getBookedEventsData)
-    }, [dispatch])
-
-    console.log(bookedEvents)
+    dispatch(bookedEventsActions.replaceBookedEvents(bookedEvents));
 
     return (
         <BookedEventsList events={bookedEvents}/>
@@ -23,10 +18,14 @@ const BookedEventsHomePage = () => {
 
 export default BookedEventsHomePage
 
-export const loader = ({request, params}) => {
-    
-};
+export const loader = async ({request, params}) => {
+    const response = await fetch('https://react-http-6cb96-default-rtdb.europe-west1.firebasedatabase.app/booked-events.json');
 
-export const action = ({request, params}) => {
+    if (!response.ok) {
+        throw new Error("Could not load cart!")
+    };
 
+    const bookedEvents = await response.json();
+
+    return bookedEvents
 };

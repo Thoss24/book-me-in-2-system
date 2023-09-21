@@ -9,6 +9,8 @@ const EventDetails = (props) => {
 
     const param = useParams();
 
+    console.log(props.id)
+
     const dispatch = useDispatch();
 
     const bookEvent = () => {

@@ -36,7 +36,7 @@ const EditEventForm = (props) => {
 
     if (!nameInputInvalid && nameInputValue.length > 0) {
         formIsValid = true
-    }
+    };
    
     return (
         <Form method="PATCH" onSubmit={submitFormHandler} className={classes['edit-event-form']}>

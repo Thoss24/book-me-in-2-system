@@ -9,7 +9,7 @@ import HomePage from "./routes/home/HomePage";
 import EventsHomePage, {
   loader as eventsLoader,
 } from "./routes/events_pages/EventsHomePage";
-import BookedEventsHomePage from "./routes/booked_events_pages/BookedEventsHomePage";
+import BookedEventsHomePage, {loader as bookedEventsLoader} from "./routes/booked_events_pages/BookedEventsHomePage";
 import EventDetailPage, {
   loader as eventDetailsLoader,
   action as deleteEventAction,
@@ -19,8 +19,7 @@ import NewEventPage from "./routes/events_pages/NewEventPage";
 import EditEventPage from "./routes/events_pages/EditEventPage";
 import { action as manipulateEventAction } from "./utility/manipulate-event-actions";
 import BookedEventsRoot from "./routes/booked_events_pages/BookedEventsRoot";
-import { action as deleteBookedEventAction, loader as bookedEventsLoader} from "./routes/booked_events_pages/BookedEventsHomePage";
-import BookedEventDetailPage, { loader as bookedEventDetailsLoader } from "./routes/booked_events_pages/BookedEventDetailPage";
+import BookedEventDetailPage, { loader as bookedEventDetailsLoader, action as deleteBookedEventAction } from "./routes/booked_events_pages/BookedEventDetailPage";
 
 function App() {
   const route = createBrowserRouter([
@@ -73,12 +72,14 @@ function App() {
             {
               index: true,
               element: <BookedEventsHomePage />,
+              loader: bookedEventsLoader
             },
             {
               path: ":bookedEventId",
               id: 'booked-event-details',
               element: <BookedEventDetailPage />,
-              loader: bookedEventDetailsLoader
+              loader: bookedEventDetailsLoader,
+              action: deleteBookedEventAction
             }
           ],
         },

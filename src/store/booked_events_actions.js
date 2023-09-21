@@ -10,6 +10,8 @@ const getBookedEventsData = async (dispatch) => {
     const data = await response.json();
 
     dispatch(bookedEventsActions.replaceBookedEvents(data));
+
+    return data
 };
 
 export const addEventData = async (cart) => {

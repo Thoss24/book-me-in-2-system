@@ -11,7 +11,7 @@ import { addEventData } from "./../../store/booked_events_actions";
 import fetchEvent from "../../utility/fetch-event-data";
 
 const EventDetailPage = () => {
-  const { event } = useRouteLoaderData("events-details");
+  const { events } = useRouteLoaderData("events-details");
 
   const bookedEvents = useSelector(state => state.bookedEvents.bookedEvents);
   console.log(bookedEvents)
@@ -24,11 +24,12 @@ const EventDetailPage = () => {
     <MainContentWrapper>
       <Suspense>
         <PageHeading header={"Event Details"} />
-        <Await resolve={event}>
+        <Await resolve={events}>
           {(event) => (
             <EventDetails
               name={event.name}
               date={event.date}
+              
             />
           )}
         </Await>
@@ -45,7 +46,7 @@ export const loader = async ({ request, params }) => {
   console.log(id);
 
   return defer({
-    event: await fetchEvent(id),
+    events: await fetchEvent(id),
   });
 };
 

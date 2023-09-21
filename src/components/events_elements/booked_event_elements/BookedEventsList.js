@@ -7,6 +7,7 @@ const BookedEventsList = (props) => {
     let result = [];
     const events = props.events;
     for (const event in events) {
+      console.log(events[event])
       result.push({
         name: events[event].name,
         date: events[event].date,
