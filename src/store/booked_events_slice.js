@@ -40,6 +40,9 @@ const bookedEventsSlice = createSlice({
 
       state.bookedEvents.splice(existingBookedEventIndex, 1);
     },
+    editEvent(state, action) {
+      
+    }
   },
 });
 

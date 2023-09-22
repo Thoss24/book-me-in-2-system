@@ -31,7 +31,7 @@ export const action = async ({request, params}) => {
 
     if (!response.ok) {
         throw json({message: "could not find event"}, {status: 500})
-    } ;
+    };
 
     return redirect('/events');
 };

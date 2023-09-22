@@ -11,6 +11,8 @@ const BookedEventsHomePage = () => {
 
     dispatch(bookedEventsActions.replaceBookedEvents(bookedEvents));
 
+    console.log(bookedEvents)
+
     return (
         <BookedEventsList events={bookedEvents}/>
     )

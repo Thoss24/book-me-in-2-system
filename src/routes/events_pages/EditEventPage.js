@@ -5,6 +5,8 @@ const EditEventPage = () => {
 
     const { event } = useRouteLoaderData('events-details');
 
+    console.log(event)
+
     const name = event.name;
 
     const date = event.date;
