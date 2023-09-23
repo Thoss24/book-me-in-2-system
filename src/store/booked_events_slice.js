@@ -41,7 +41,13 @@ const bookedEventsSlice = createSlice({
       state.bookedEvents.splice(existingBookedEventIndex, 1);
     },
     editEvent(state, action) {
-      
+      console.log(action.payload)
+      const bookedEventIndex = state.bookedEvents.findIndex(
+        (event) => event.name === action.payload.oldName
+      );
+      const bookedEvent = state.bookedEvents[bookedEventIndex];
+
+      console.log(bookedEvent)
     }
   },
 });

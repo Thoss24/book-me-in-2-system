@@ -3,10 +3,14 @@ import useFormInput from "../../../hooks/use-form-input";
 import useValidateForm from "../../../hooks/use-validate-form";
 import classes from "./EditEventForm.module.css";
 import { Link } from "react-router-dom";
+import { bookedEventsActions } from "../../../store/booked_events_slice";
+import { useDispatch } from "react-redux";
 
 const EditEventForm = (props) => {
 
-    const { nameIsValid, dateIsValid } = useValidateForm()
+    const { nameIsValid, dateIsValid } = useValidateForm();
+
+    const dispatch = useDispatch();
 
     const {
         inputValue: nameInputValue,
@@ -17,6 +21,7 @@ const EditEventForm = (props) => {
     } = useFormInput(nameIsValid);
 
     const {
+        inputValue: dateInputValue,
         inputInvalid: dateInputInvalid,
         handleChangeInput: handleDateChange,
         handleIsTouched: handleDateIsTouched,
@@ -24,8 +29,18 @@ const EditEventForm = (props) => {
     } = useFormInput(dateIsValid);
 
     const submitFormHandler = () => {
-        handleNameReset()
-        handleDateReset()
+        handleNameReset();
+        handleDateReset();
+    };
+
+    const handleEdit = () => {
+        const event = {
+            oldName: props.name,
+            oldDate: props.date,
+            name: nameInputValue,
+            date: dateInputValue
+        };
+        dispatch(bookedEventsActions.editEvent(event));
     };
 
     const nameInputIsValid = nameInputInvalid ? classes.invalid : classes.valid;
@@ -50,7 +65,7 @@ const EditEventForm = (props) => {
                 <input className={dateInputIsValid} type="date" name="date" onChange={handleDateChange} onBlur={handleDateIsTouched} defaultValue={props.date}/>
             </div>
             <div className={classes.buttons}>
-            <button type="submit" disabled={!formIsValid}>Done</button>
+            <button type="submit" onClick={handleEdit} disabled={!formIsValid}>Done</button>
             <button type="none" ><Link to={'/events'}>Cancel</Link></button>
             </div>
         </Form>

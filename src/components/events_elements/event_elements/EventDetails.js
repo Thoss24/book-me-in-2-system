@@ -9,7 +9,7 @@ const EventDetails = (props) => {
 
     const param = useParams();
 
-    console.log(props.id)
+    console.log(props.name)
 
     const dispatch = useDispatch();
 

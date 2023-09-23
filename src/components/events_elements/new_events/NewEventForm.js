@@ -32,14 +32,17 @@ const NewEventForm = () => {
     } = useFormInput(dateIsValid)
 
     const submitFormHandler = () => {
-      const event = {
-        name: name.current.value,
-        date: date.current.value
-      };
-      dispatch(eventsActions.addEvent(event))
       nameHandleReset()
       dateHandleReset()
-    };
+  };
+
+  // const handleAddEvent = () => {
+  //     const event = {
+  //       name: name.current.value,
+  //       date: date.current.value
+  //     };
+  //     dispatch(eventsActions.addEvent(event))
+  // };
 
   const nameInputIsValid = nameInputInvalid ? classes.invalid : classes.valid;
   const dateInputIsValid = dateInputInvalid ? classes.invalid : classes.valid;
@@ -61,7 +64,7 @@ const NewEventForm = () => {
         <input className={dateInputIsValid} type="date" name="date" onChange={dateChangeInput} onBlur={dateIsTouched} ref={date}/>
       </div>
       <div className={classes.buttons}>
-        <button type="submit" disabled={!formIsValid}>Add</button>
+        <button type="submit"  disabled={!formIsValid}>Add</button>
         <button type="none" text={'Cancel'}><Link to={'/events'}>Cancel</Link></button>
       </div>
     </Form>

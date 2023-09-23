@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 const EventsList = (props) => {
 
-    
     const dispatch = useDispatch();
     
     dispatch(eventsActions.replaceEvents(props.events));

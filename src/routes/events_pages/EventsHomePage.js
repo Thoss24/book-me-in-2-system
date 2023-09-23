@@ -10,6 +10,8 @@ const EventsHomePage = () => {
 
     const { events } = useLoaderData();
 
+    console.log(events)
+
     return (
         <MainContentWrapper>
        <Suspense fallback={<Loading message={'Loading....'}/>}>
